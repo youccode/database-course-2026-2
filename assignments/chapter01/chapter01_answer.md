@@ -587,7 +587,7 @@ citation의 경우에도 인용 대상 논문이 DB의 Paper와 정확하게 연
 여러 문제를 미리 생각해볼 수 있었다.
 
 수정하거나 거절한 부분: 
-PaperIdentifier, PaperVersion, CitationOccurrence, VenueEdition 같은 구조를 초기 단계부터 모두 별도 엔티티로 분리해야 한다는 방향은
+PaperVersion, CitationOccurrence, VenueEdition 같은 구조를 초기 단계부터 모두 별도 엔티티로 분리해야 한다는 방향은
 그대로 수용하지 않았다. 또한 arXiv와 출판본, citation context, venue 세부 구조에 대해서도 특정한 방식으로 바로 결정하지 않고 서비스
 요구사항에 따라 나중에 정하기로 했다.
 
