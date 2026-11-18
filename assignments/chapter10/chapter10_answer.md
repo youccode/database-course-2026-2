@@ -796,8 +796,8 @@ Chapter 07~09에서 발전시킨 개인 프로젝트를 사용합니다.
 
 | ID | 반복 조회 질문 | WHERE | JOIN | ORDER BY/LIMIT | 예상 반환 비율 | 후보 인덱스 |
 | --- | --- | --- | --- | --- | --- | --- |
-| P10-Q01 | 특정 논문을 인용한 후속 논문 목록은 무엇인가? | `citations.cited_paper_id = :paper_id` | `citations.citing_paper_id = papers.paper_id` | `ORDER BY citing_paper_id LIMIT 20` | 전체 인용 관계 중 특정 논문을 인용하는 일부 행으로 예상되지만, 실제 비율은 데이터 분포 확인 필요 | `citations(cited_paper_id, citing_paper_id)` |
-| P10-Q02 | 특정 프로젝트에서 지정한 검토 상태의 논문 목록은 무엇인가? | `project_papers.project_id = :project_id AND review_status = :status` | `project_papers.paper_id = papers.paper_id` | `ORDER BY project_papers.paper_id LIMIT 20` | 전체 프로젝트 논문 등록 관계 중 해당 프로젝트와 상태에 해당하는 일부 행으로 예상되지만, 실제 비율은 데이터 분포 확인 필요 | `project_papers(project_id, review_status, paper_id)` |
+| P10-Q01 | 특정 논문의 피인용 목록 조회 | `cited_paper_id = :paper_id` | `citations` → `papers` | `citing_paper_id` 기준 상위 20건 | 소수 행 예상, 실측 전 | `(cited_paper_id, citing_paper_id)` |
+| P10-Q02 | 프로젝트별 검토 상태 논문 조회 | `project_id`, `review_status` 조건 | `project_papers` → `papers` | `paper_id` 기준 상위 20건 | 일부 행 예상, 실측 전 | `(project_id, review_status, paper_id)` |
 
 ## 후보 1
 
